@@ -37,6 +37,22 @@ public class Prenda {
 		this.nombrePrenda = nombrePrenda;
 		this.precioLista = precioLista;
 	}
+	
+	
+	
+	
+	@Override
+	public String toString() {
+		return "Prenda [codigo=" + codigo + ", nombrePrenda=" + nombrePrenda + ", precioLista=" + precioLista + "]";
+	}
+
+	/**
+	 * Devuelve del código de la prenda
+	 * @return codigo
+	 */
+	public int getCodigo() {
+		return codigo;
+	}
 
 	/**
 	 * Devuelve el precio de lista
