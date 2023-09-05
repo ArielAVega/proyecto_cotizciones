@@ -54,4 +54,18 @@ public class Vendedor {
 		this.historialCotizaciones.add(cotizacion);
 	}
 	
+	
+	public void mostrarHistorial() {
+		for(Cotizacion c:historialCotizaciones) {
+			System.out.println(c);
+		}
+	}
+
+	@Override
+	public String toString() {
+		return "Vendedor [codigo=" + codigo + ", nombres=" + nombres + ", apellidos=" + apellidos
+				+ "]";
+	}
+	
+	
 }

@@ -46,6 +46,13 @@ public class Cotizacion {
 		this.vendedor = vendedor;
 		this.totalCotizacion = this.cantidadPrendas * prenda.getPrecioLista();
 	}
+
+	@Override
+	public String toString() {
+		return "Cotizacion [nroIdentificacion=" + nroIdentificacion + ", fecha=" + fecha + ", prenda=" + prenda
+				+ ", cantidadPrendas=" + cantidadPrendas + ", totalCotizacion=" + totalCotizacion + ", vendedor="
+				+ vendedor + "]";
+	}
 	
 	
 	
