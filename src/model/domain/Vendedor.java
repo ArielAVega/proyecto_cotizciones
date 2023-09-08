@@ -60,6 +60,14 @@ public class Vendedor {
 			System.out.println(c);
 		}
 	}
+	
+	/**
+	 * Devuelve el proximo valor del nro de totización 
+	 * @return el proximo nro de cotizción que realizará el vendedor
+	 */
+	public int getNextNroCotizacion() {
+		return this.historialCotizaciones.size()+1;
+	}
 
 	@Override
 	public String toString() {

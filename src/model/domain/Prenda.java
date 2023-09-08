@@ -5,6 +5,7 @@ package model.domain;
  * @author ariel
  *
  */
+
 public class Prenda {
 	/**
 	 * Código de la prenda
@@ -37,9 +38,6 @@ public class Prenda {
 		this.nombrePrenda = nombrePrenda;
 		this.precioLista = precioLista;
 	}
-	
-	
-	
 	
 	@Override
 	public String toString() {

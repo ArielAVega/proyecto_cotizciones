@@ -1,5 +1,7 @@
 package model.domain;
 
+import java.util.Date;
+
 /**
  * Representa una cotización realizada por un vendedor
  * @author ariel
@@ -13,7 +15,7 @@ public class Cotizacion {
 	/**
 	 * fecha en la que se realiza la cotización
 	 */
-	private String fecha;
+	private Date fecha;
 	/**
 	 * prenda cotizada
 	 */
@@ -38,7 +40,7 @@ public class Cotizacion {
 		// TODO Auto-generated constructor stub
 	}
 
-	public Cotizacion(int nroIdentificacion, String fecha, Prenda prenda, int cantidadPrendas, Vendedor vendedor) {
+	public Cotizacion(int nroIdentificacion, Date fecha, Prenda prenda, int cantidadPrendas, Vendedor vendedor) {
 		this.nroIdentificacion = nroIdentificacion;
 		this.fecha = fecha;
 		this.prenda = prenda;
