@@ -68,6 +68,40 @@ public class Vendedor {
 	public int getNextNroCotizacion() {
 		return this.historialCotizaciones.size()+1;
 	}
+	
+	
+
+	public int getCodigo() {
+		return codigo;
+	}
+
+	public void setCodigo(int codigo) {
+		this.codigo = codigo;
+	}
+
+	public String getNombres() {
+		return nombres;
+	}
+
+	public void setNombres(String nombres) {
+		this.nombres = nombres;
+	}
+
+	public String getApellidos() {
+		return apellidos;
+	}
+
+	public void setApellidos(String apellidos) {
+		this.apellidos = apellidos;
+	}
+
+	public List<Cotizacion> getHistorialCotizaciones() {
+		return historialCotizaciones;
+	}
+
+	public void setHistorialCotizaciones(List<Cotizacion> historialCotizaciones) {
+		this.historialCotizaciones = historialCotizaciones;
+	}
 
 	@Override
 	public String toString() {

@@ -39,6 +39,13 @@ public class Prenda {
 		this.precioLista = precioLista;
 	}
 	
+	
+	
+	public Prenda(String nombrePrenda, double precioLista) {
+		this.nombrePrenda = nombrePrenda;
+		this.precioLista = precioLista;
+	}
+
 	@Override
 	public String toString() {
 		return "Prenda [codigo=" + codigo + ", nombrePrenda=" + nombrePrenda + ", precioLista=" + precioLista + "]";
@@ -51,6 +58,12 @@ public class Prenda {
 	public int getCodigo() {
 		return codigo;
 	}
+	
+	
+
+	public void setCodigo(int codigo) {
+		this.codigo = codigo;
+	}
 
 	/**
 	 * Devuelve el precio de lista
@@ -58,6 +71,19 @@ public class Prenda {
 	 */
 	public double getPrecioLista() {
 		return precioLista;
+	}
+
+	public String getNombrePrenda() {
+		return nombrePrenda;
+	}
+
+	public void setNombrePrenda(String nombrePrenda) {
+		this.nombrePrenda = nombrePrenda;
+	}
+
+
+	public void setPrecioLista(double precioLista) {
+		this.precioLista = precioLista;
 	}
 	
 	
