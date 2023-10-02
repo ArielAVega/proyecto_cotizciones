@@ -1,5 +1,12 @@
 package dao.imp;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.sql.Blob;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -7,12 +14,10 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
-
-import com.mysql.cj.MysqlConnection;
-
 import dao.ConexionMySQLDB;
 import dao.DAO;
 import model.domain.Prenda;
+import model.util.GestorArchivos;
 
 public class PrendaDAOImp implements ConexionMySQLDB, DAO<Prenda, Integer>{
 
@@ -29,7 +34,11 @@ public class PrendaDAOImp implements ConexionMySQLDB, DAO<Prenda, Integer>{
 				int codigo = resultado.getInt("pre_codigo");
 				String nombrePrenda = resultado.getString("pre_nombre");
 				double precio = resultado.getDouble("pre_precio_lista");
-				prendaBuscada = new Prenda(codigo, nombrePrenda, precio);
+				Blob imagen = resultado.getBlob("pre_imagen");
+				InputStream inputStream = imagen.getBinaryStream();
+				File archivoImagen = new File("D:" + File.separator + "Ficheros" + File.separator+"camisa.jpg");
+				GestorArchivos.copyInputStreamToFile(inputStream, archivoImagen);
+				prendaBuscada = new Prenda(codigo, nombrePrenda, precio,archivoImagen);
 			}	
 			
 		} catch (SQLException e) {
@@ -53,22 +62,30 @@ public class PrendaDAOImp implements ConexionMySQLDB, DAO<Prenda, Integer>{
 	public boolean insertar(Prenda entidad) {
 		boolean isInsert = false;
 		Connection conexion = getConexion();
-		String sentenciaSQL = "INSERT INTO prendas (pre_nombre, pre_precio_lista) VALUES (?, ?)";
+		String sentenciaSQL = "INSERT INTO prendas (pre_nombre, pre_precio_lista, pre_imagen) VALUES (?, ?, ?)";
 			
-		try {
-			PreparedStatement objetoSentenciaSQL=conexion.prepareStatement(sentenciaSQL);
+		try (PreparedStatement objetoSentenciaSQL=conexion.prepareStatement(sentenciaSQL);
+			 InputStream inputStream = new FileInputStream(entidad.getImagen());){
+			
 			objetoSentenciaSQL.setString(1, entidad.getNombrePrenda());
 			objetoSentenciaSQL.setDouble(2, entidad.getPrecioLista());
+			objetoSentenciaSQL.setBlob(3, inputStream);
 			int result = objetoSentenciaSQL.executeUpdate();
 			if(result==1) {
 				isInsert=true;
 			}
-			objetoSentenciaSQL.close();
-			conexion.close();
+			//objetoSentenciaSQL.close();
+			//conexion.close();
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 			
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
 		}
 		
 		return isInsert;

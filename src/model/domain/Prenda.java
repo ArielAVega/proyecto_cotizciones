@@ -1,5 +1,8 @@
 package model.domain;
 
+import java.io.File;
+import java.sql.Blob;
+
 /**
  * Representa las prendas que se pueden cotizar
  * @author ariel
@@ -20,6 +23,9 @@ public class Prenda {
 	 */
 	private double precioLista;
 	
+	private File imagen;
+	
+
 	/**
 	 * Constructor por defecto
 	 */
@@ -41,9 +47,24 @@ public class Prenda {
 	
 	
 	
+	public Prenda(int codigo, String nombrePrenda, double precioLista, File imagen) {
+		this.codigo = codigo;
+		this.nombrePrenda = nombrePrenda;
+		this.precioLista = precioLista;
+		this.imagen = imagen;
+	}
+
 	public Prenda(String nombrePrenda, double precioLista) {
 		this.nombrePrenda = nombrePrenda;
 		this.precioLista = precioLista;
+	}
+
+	
+	
+	public Prenda(String nombrePrenda, double precioLista, File imagen) {
+		this.nombrePrenda = nombrePrenda;
+		this.precioLista = precioLista;
+		this.imagen = imagen;
 	}
 
 	@Override
@@ -86,6 +107,12 @@ public class Prenda {
 		this.precioLista = precioLista;
 	}
 	
-	
+	public File getImagen() {
+		return imagen;
+	}
+
+	public void setImagen(File imagen) {
+		this.imagen = imagen;
+	}
 	
 }

@@ -1,5 +1,7 @@
 package main;
 
+import java.io.File;
+
 import dao.DAO;
 import dao.imp.PrendaDAOImp;
 import model.domain.Prenda;
@@ -11,8 +13,13 @@ public class PruebaConexion {
 		
 		DAO<Prenda, Integer> prendaDAO = new PrendaDAOImp();
 		
-		Prenda nuevaPrenda = new Prenda("Prenda06", 6000);
+		File archivo = new File("D:" + File.separator + "Ficheros" + File.separator+"camisa.jpg");
+		
+		Prenda nuevaPrenda = new Prenda("Camisa Azul", 9000,archivo);
 		
 		prendaDAO.insertar(nuevaPrenda);
+		
+		//Prenda prendaBuscada = prendaDAO.buscarPorId(9);
+		
 	}
 }
